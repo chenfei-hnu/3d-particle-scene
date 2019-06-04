@@ -1,0 +1,467 @@
+body {
+    background-color: #0c0c18;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.nav {
+    position: fixed;
+    display: none;
+    left: 2%;
+    top: 50%;
+    z-index: 12;
+    width: 100px;
+    height: 600px;
+    margin-top: -300px
+}
+
+.nav ul {
+    z-index: 999;
+    position: relative;
+    left: 40px;
+    height: 240px;
+    top: 180px
+}
+
+.nav ul li {
+    height: 40px;
+    position: relative;
+    white-space: nowrap
+}
+
+z.nav ul li.active i {
+    background-image: url(assets/5984900200176.png)
+}
+
+.nav ul li i {
+    width: 80px;
+    height: 44px;
+    display: block;
+    font-size: 15px;
+    color: #a6a6aa;
+    font-style: normal;
+    display: inline
+}
+
+.nav ul li i:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-radius: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 3px solid #fff;
+    -webkit-transition: left .3s, top .3s, width .3s, height .3s;
+    transition: left .3s, top .3s, width .3s, height .3s;
+    position: absolute;
+    left: -21px;
+    top: 8px
+}
+
+.nav ul li.active i {
+    color: #fff
+}
+
+.nav ul li.active i:before {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #fff;
+    left: -27px;
+    top: 2px
+}
+
+.nav ul li span {
+    font-size: 12px;
+    color: #a6a6aa;
+    position: absolute;
+    width: 100px;
+    opacity: 0;
+    -webkit-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    transform: translateX(-10px);
+    -webkit-transition: opacity .3s, color .3s, -webkit-transform .3s;
+    transition: opacity .3s, color .3s, -webkit-transform .3s;
+    transition: opacity .3s, transform .3s, color .3s;
+    transition: opacity .3s, transform .3s, color .3s, -webkit-transform .3s;
+    text-transform: uppercase;
+    top: 3px
+}
+
+.nav ul li span:hover {
+    color: #fff;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s
+}
+
+.nav ul li:nth-of-type(1) span {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s
+}
+
+.nav ul li:nth-of-type(2) span {
+    -webkit-transition-delay: .02s;
+    transition-delay: .02s
+}
+
+.nav ul li:nth-of-type(3) span {
+    -webkit-transition-delay: .04s;
+    transition-delay: .04s
+}
+
+.nav ul li:nth-of-type(4) span {
+    -webkit-transition-delay: .06s;
+    transition-delay: .06s
+}
+
+.nav ul li:nth-of-type(5) span {
+    -webkit-transition-delay: .08s;
+    transition-delay: .08s
+}
+
+.nav ul li:nth-of-type(6) span {
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s
+}
+
+.nav:hover ul li span {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px)
+}
+
+.nav ul li.active span {
+    color: #fff;
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px)
+}
+
+
+.text-container {
+    height: 100%;
+    position: relative;
+    touch-action: none;
+    transform: translate3d(0px, 0px, 0px);
+    transition: all 700ms ease 0s;
+    z-index: 1;
+}
+
+.text-container .section {
+    position: relative;
+    display: none;
+}
+
+.fp-section {
+    position: relative;
+    box-sizing: border-box;
+}
+
+html.fp-enabled,
+.fp-enabled body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.fp-tableCell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+.section.fp-completely .txt {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.section.fp-completely .txt,
+.section.fp-completely .dots {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+.section .txt {
+    position: absolute;
+    top: 50%;
+    width: 31%;
+    -webkit-user-select: none;
+    z-index: 1;
+}
+
+.txt img {
+    width: 100%;
+    pointer-events: none;
+}
+
+.section .txt,
+.section .dots {
+    opacity: 0;
+    -webkit-transition: opacity 2s .5s, -webkit-filter 2s .5s;
+    transition: opacity 2s .5s, -webkit-filter 2s .5s;
+    transition: opacity 2s .5s, filter 2s .5s;
+    transition: opacity 2s .5s, filter 2s .5s, -webkit-filter 2s .5s;
+    -webkit-filter: blur(100px);
+    filter: blur(100px);
+}
+
+.section.fp-completely .txt,
+.section.fp-completely .dots {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.section .dots {
+    z-index: 12;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.section .txt,
+.section .dots {
+    opacity: 0;
+    -webkit-transition: opacity 2s .5s, -webkit-filter 2s .5s;
+    transition: opacity 2s .5s, -webkit-filter 2s .5s;
+    transition: opacity 2s .5s, filter 2s .5s;
+    transition: opacity 2s .5s, filter 2s .5s, -webkit-filter 2s .5s;
+    -webkit-filter: blur(100px);
+    filter: blur(100px);
+}
+
+.section .fp-tableCell .dots {
+    -webkit-transition-delay: 1s, 1s;
+    transition-delay: 1s, 1s;
+}
+
+.webglyes .dot {
+    width: .3rem;
+    height: .3rem;
+}
+
+.dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+    cursor: pointer;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+
+.dot b {
+    -webkit-animation: dotanm 8s infinite;
+    animation: dotanm 8s infinite;
+    background: #fff;
+    background: -webkit-radial-gradient(circle closest-side, #fff 10%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+    background: radial-gradient(circle closest-side, #fff 10%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+.dot b:nth-of-type(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.text-container .page1 .dots .dot-1 {
+    right: 40%;
+    margin-top: -17%
+}
+
+.page2 .dots .dot-1 {
+    left: 20%;
+    margin-top: -8%
+}
+
+.page2 .dots .dot-2 {
+    left: 40%;
+    margin-top: -6%;
+}
+
+.page2 .dots .dot-3 {
+    left: 30%;
+    margin-top: 2%;
+}
+
+.page2 .dots .dot-4 {
+    left: 16%;
+    margin-top: 6%;
+}
+
+.page2 .dots .dot-5 {
+    left: 28%;
+    margin-top: -14%;
+}
+
+.page2 .dots .dot-6 {
+    left: 24%;
+    margin-top: 10%;
+}
+
+.page3 .dots .dot-1 {
+    right: 20%;
+    margin-top: -13%
+}
+
+.page3 .dots .dot-2 {
+    right: 30%;
+    margin-top: -8%;
+}
+
+.page3 .dots .dot-3 {
+    right: 24%;
+    margin-top: 8%;
+}
+
+.page3 .dots .dot-4 {
+    right: 38%;
+    margin-top: 3%;
+}
+
+.page3 .dots .dot-5 {
+    right: 18%;
+    margin-top: 2%;
+}
+
+.page3 .dots .dot-6 {
+    right: 36%;
+    margin-top: -16%;
+}
+
+.page3 .dots .dot-7 {
+    right: 6%;
+    margin-top: -6%;
+}
+
+.page4 .dots .dot-1 {
+    right: 26%;
+    margin-top: -22%;
+}
+
+.page4 .dots .dot-2 {
+    right: 20%;
+    margin-top: -13%
+}
+
+.page4 .dots .dot-3 {
+    right: 36%;
+    margin-top: -16%;
+}
+
+.page4 .dots .dot-4 {
+    right: 38%;
+    margin-top: 3%;
+}
+
+.page4 .dots .dot-5 {
+    right: 30%;
+    margin-top: -3%;
+}
+
+.page5 .dots .dot-1 {
+    right: 20%;
+    margin-top: -13%
+}
+
+.text-container .page1 .dots .dot-2 {
+    right: 35%;
+    margin-top: -11%
+}
+
+.text-container .page1 .dots .dot-3 {
+    right: 28%;
+    margin-top: -13%;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2)
+}
+
+.text-container .page1 .dots .dot-4 {
+    right: 16%;
+    margin-top: -11%
+}
+
+.text-container .page1 .dots .dot-5 {
+    right: 35%;
+    margin-top: 0
+}
+
+.text-container .page1 .dots .dot-6 {
+    right: 31%;
+    margin-top: 6%
+}
+
+.text-container .page1 .dots .dot-7 {
+    right: 26%;
+    margin-top: 3%
+}
+
+.text-container .page1 .dots .dot-8 {
+    right: 21%;
+    margin-top: 1%
+}
+
+.text-container .page1 .dots .dot-9 {
+    right: 16%;
+    margin-top: 6%;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2)
+}
+
+.text-container .page1 .dots .dot-10 {
+    right: 14%;
+    margin-top: -4%
+}
+
+.page1 .txt {
+    top: 35%;
+    right: 6%;
+}
+
+.page2 .txt {
+    left: 18%;
+    top: 40%;
+}
+
+.page3 .txt {
+    right: 5%;
+    top: 40%;
+}
+
+.page4 .txt {
+    top: 25%;
+    right: 10%;
+}
+
+.page5 .txt {
+    top: 35%;
+    left: 35%;
+}
+
+.page5 .txt-bottom {
+    top: 10%;
+}
