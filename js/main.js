@@ -30,9 +30,9 @@ var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
 var positionAnimate, rotationAnimate;
-var lastClickTime, body = $('body'),
-    width = body.width(),
-    height = body.height();
+var lastClickTime,
+    width = window.innerWidth,
+    height = window.innerHeight;
 
 var isMoving = false;
 
@@ -98,9 +98,7 @@ function init() {
 //横竖屏处理
 function listenScreenResize() {
     setInterval(function () {
-        if (!width) width = body.width();
-        if (!height) height = body.height();
-        if (Math.abs(width - body.width()) > 10 || Math.abs(height - body.height()) > 10) {
+        if (width != window.innerWidth || height != window.innerHeight) {
             judgeLandscape(true);
         }
     }, 500);
@@ -108,12 +106,14 @@ function listenScreenResize() {
 }
 //横竖屏处理
 function judgeLandscape(isResize) {
-    width = body.width();
-    height = body.height();
+    width = window.innerWidth;
+    height = window.innerHeight;
     if (isResize) {
-        location.href = location.href;
+        location.reload();
+        return;
     }
     if (width < height) {
+        $('body').attr('style', 'background-color:#fff;');
         $("body").empty().append("<div class='landscape'></div>");
         return false;
     }
@@ -344,6 +344,7 @@ function prepareMove(index, timeout) {
         }
     ];
     setTimeout(function () {
+        $("#text-container").show();
         currentAnimatePoints.stopRotation = true;
         camera.currentPosition = cameraObj[index].position;
         rotationAnimate = new TWEEN.Tween(camera.rotation).easing(TWEEN.Easing.Quintic.Out).to(cameraObj[

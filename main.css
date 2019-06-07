@@ -18,7 +18,7 @@ body {
 .nav {
     position: fixed;
     display: none;
-    left: 2%;
+    left: 0%;
     top: 50%;
     z-index: 12;
     width: 100px;
@@ -153,7 +153,9 @@ z.nav ul li.active i {
 
 .text-container {
     height: 100%;
-    position: relative;
+    width: 100%;
+    position: absolute;
+    display: none;
     touch-action: none;
     transform: translate3d(0px, 0px, 0px);
     transition: all 700ms ease 0s;
@@ -161,8 +163,8 @@ z.nav ul li.active i {
 }
 
 .text-container .section {
-    position: relative;
-    display: none;
+    width: 100%;
+    height: 100%;
 }
 
 .fp-section {
@@ -179,9 +181,10 @@ html.fp-enabled,
 }
 
 .fp-tableCell {
-    display: table-cell;
-    vertical-align: middle;
+    display: inline-block;
+    position: relative;
     width: 100%;
+    top: 0;
     height: 100%;
 }
 
@@ -238,6 +241,8 @@ canvas {
 .section .dots {
     z-index: 12;
     opacity: 0;
+    top: 52%;
+    right: 0%;
     position: absolute;
     width: 100%;
 }
@@ -298,7 +303,7 @@ canvas {
 }
 
 .text-container .page1 .dots .dot-1 {
-    right: 40%;
+    right: 15%;
     margin-top: -17%
 }
 
@@ -308,7 +313,7 @@ canvas {
 }
 
 .page2 .dots .dot-2 {
-    left: 40%;
+    left: 15%;
     margin-top: -6%;
 }
 
@@ -449,30 +454,30 @@ canvas {
 }
 
 .page1 .txt {
-    top: 35%;
+    top: 40%;
     right: 6%;
 }
 
 .page2 .txt {
-    left: 18%;
-    top: 40%;
+    top: 42%;
+    left: 20%;
 }
 
 .page3 .txt {
-    right: 5%;
+    right: 0%;
     top: 40%;
 }
 
 .page4 .txt {
-    top: 25%;
-    right: 10%;
+    top: 28%;
+    right: 5%;
 }
 
 .page5 .txt {
-    top: 35%;
+    top: 33%;
     left: 35%;
 }
 
 .page5 .txt-bottom {
-    top: 10%;
+    top: 2%;
 }
