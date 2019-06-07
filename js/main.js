@@ -99,7 +99,7 @@ function init() {
 function listenScreenResize() {
     setInterval(function () {
         if (!width) width = body.width();
-        if (!height) width = body.height();
+        if (!height) height = body.height();
         if (Math.abs(width - body.width()) > 10 || Math.abs(height - body.height()) > 10) {
             judgeLandscape(true);
         }
