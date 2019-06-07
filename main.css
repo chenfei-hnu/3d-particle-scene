@@ -4,6 +4,17 @@ body {
     overflow: hidden;
 }
 
+.landscape {
+    background: url(assets/rotate.png) no-repeat;
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
 .nav {
     position: fixed;
     display: none;

@@ -30,6 +30,9 @@ var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
 var positionAnimate, rotationAnimate;
+var lastClickTime, body = $('body'),
+    width = body.width(),
+    height = body.height();
 
 var isMoving = false;
 
@@ -43,51 +46,76 @@ init();
 animate();
 //初始化3D场景
 function init() {
-    clock = new THREE.Clock();
-    container = document.createElement('div');
-    document.body.appendChild(container);
+    if (listenScreenResize()) {
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 50000);
-    camera.position.z = 1000;
+        clock = new THREE.Clock();
+        container = document.createElement('div');
+        document.body.appendChild(container);
 
-    scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x000000, 0.0005);
-    scene.background = new THREE.Color(0x0c0c18);
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 50000);
+        camera.position.z = 1000;
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(new THREE.Color(0x000, 1.0));
-    renderer.shadowMapEnabled = true;
-    container.appendChild(renderer.domElement);
+        scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x000000, 0.0005);
+        scene.background = new THREE.Color(0x0c0c18);
 
-    initBackgroudPoints();
-    loadAnimatePoints();
-    var renderPass = new THREE.RenderPass(scene, camera);
-    var effectFilm = new THREE.FilmPass(.5, .5, 1500, !1);
-    var shaderPass = new THREE.ShaderPass(THREE.FocusShader);
-    shaderPass.uniforms.screenWidth.value = window.innerWidth,
-        shaderPass.uniforms.screenHeight.value = window.innerHeight,
-        shaderPass.renderToScreen = true;
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(new THREE.Color(0x000, 1.0));
+        renderer.shadowMapEnabled = true;
+        container.appendChild(renderer.domElement);
 
-    composer = new THREE.EffectComposer(renderer);
-    composer.addPass(renderPass);
-    composer.addPass(effectFilm);
-    composer.addPass(shaderPass);
+        initBackgroudPoints();
+        loadAnimatePoints();
+        var renderPass = new THREE.RenderPass(scene, camera);
+        var effectFilm = new THREE.FilmPass(.5, .5, 1500, !1);
+        var shaderPass = new THREE.ShaderPass(THREE.FocusShader);
+        shaderPass.uniforms.screenWidth.value = window.innerWidth,
+            shaderPass.uniforms.screenHeight.value = window.innerHeight,
+            shaderPass.renderToScreen = true;
 
-    //controls = new THREE.OrbitControls( camera, renderer.domElement );
+        composer = new THREE.EffectComposer(renderer);
+        composer.addPass(renderPass);
+        composer.addPass(effectFilm);
+        composer.addPass(shaderPass);
 
-    var axes = new THREE.AxesHelper(2000);
-    //scene.add(axes);
+        //controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-    document.addEventListener('keydown', onKeyDown, false);
-    document.addEventListener('mousemove', onMouseMove, false);
-    $(document).on("mousewheel DOMMouseScroll", onMouseWheel);
-    window.addEventListener('resize', onWindowResize, false);
-    $('.nav').on('click', 'a', function (e) {
-        var obj = $(findParentA(e.target));
-        var index = obj.attr('index');
-        activeIndex(index);
-    });
+        var axes = new THREE.AxesHelper(2000);
+        //scene.add(axes);
+
+        document.addEventListener('keydown', onKeyDown, false);
+        document.addEventListener('mousemove', onMouseMove, false);
+        $(document).on("mousewheel DOMMouseScroll", onMouseWheel);
+        window.addEventListener('resize', onWindowResize, false);
+        $('.nav').on('tap', 'a', function (e) {
+            var obj = $(findParentA(e.target));
+            var index = obj.attr('index');
+            activeIndex(index);
+        });
+    }
+}
+//横竖屏处理
+function listenScreenResize() {
+    setInterval(function () {
+        if (Math.abs(width - body.width()) > 10 || Math.abs(height - body.height()) > 10) {
+            judgeLandscape(true);
+        }
+    }, 500);
+    return judgeLandscape();
+}
+//横竖屏处理
+function judgeLandscape(isResize) {
+    width = body.width();
+    height = body.height();
+    if (isResize) {
+        location.href = location.href;
+    }
+    if (width < height) {
+        $("body").empty().append("<div class='landscape'></div>");
+        return false;
+    }
+    return true;
 }
 //切换场景
 function activeIndex(index) {
