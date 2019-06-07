@@ -98,6 +98,8 @@ function init() {
 //横竖屏处理
 function listenScreenResize() {
     setInterval(function () {
+        if (!width) width = window.innerWidth;
+        if (!width) height = window.innerHeight;
         if (Math.abs(width - window.innerWidth) > 10 || Math.abs(height - window.innerHeight) > 10) {
             judgeLandscape(true);
         }
