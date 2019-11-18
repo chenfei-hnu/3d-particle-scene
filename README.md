@@ -4,6 +4,6 @@
 
 3D particle effects using the three.js coded imitation Tencent interactive entertainment platform.
 
-直接可访问 https://rayprojects.github.io/3d-particle-scene/index.html 预览页面效果。
+直接可访问 https://introfei.github.io/3d-particle-scene/index.html 预览页面效果。
 
-Direct access to https://rayprojects.github.io/3d-particle-scene/index.html preview page performance.
+Direct access to https://introfei.github.io/3d-particle-scene/index.html preview page performance.
